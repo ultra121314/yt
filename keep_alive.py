@@ -1,22 +1,29 @@
-from flask import Flask, render_template
+from flask import Flask
 from threading import Thread
 
 app = Flask(__name__)
+
 @app.route('/')
 def index():
     return "Alive"
 
-def run():
-    app.run(host='0.0.0.0',port=8080)
+# Define a function to run Flask on a specific port
+def run(port):
+    app.run(host='0.0.0.0', port=port, threaded=True)
 
-def run():
-    app.run(host='0.0.0.0',port=1111)
-
-def run():
-    app.run(host='0.0.0.0',port=8888)
-
-
-
+# Function to keep the Flask app running on multiple ports
 def keep_alive():
-    t = Thread(target=run)
-    t.start()    
+    ports = [8080, 1111, 8888]
+    threads = []
+
+    for port in ports:
+        t = Thread(target=run, args=(port,))
+        threads.append(t)
+        t.start()
+
+    # Optionally join threads to ensure they all complete
+    for t in threads:
+        t.join()
+
+if __name__ == "__main__":
+    keep_alive()
